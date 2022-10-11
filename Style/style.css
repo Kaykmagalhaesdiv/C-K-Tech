@@ -1,20 +1,87 @@
 
+
 body{
     margin: 0;
+    font-size: 62.8%
 }
 
+/* ---------LATERAL-----------*/
 .content{
     height: 585px;
     margin: 0 !important;
     padding: 0 !important;
 
     background-color: #FFFFFF;
-    border: 1px solid red;
+    
+}
+
+#menu_lateral{
+    display: flex;
+    justify-content: center;
+}
+
+#menu_lateral img{
+    margin-top: 64px;
 }
 
 footer{
-    width: 100px;
     height: 48px;
-    width: 100vw;
-    border: 1px solid red;
+    align-items: center;
+    font-size: 14px;
+    color: #B3B3B3;
+    display: flex;
+    justify-content: center;
+}
+
+/* ---------FIM LATERAL-----------*/
+
+/*---------PRINCIPAL------------*/
+
+#requests{
+    background-color: #F3F3F3
+}
+
+.title_header h2{
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+.title_content{
+    margin-top: 21px;
+    font-family: 'Barlow', sans-serif ;
+    font-weight: 700;
+    height: 100px;
+    display: flex;
+}
+
+.title_content h2{
+    color: #4D4D4D;
+}
+
+.btn-config{
+    background-color: #4A08FF;
+    color: white;
+
+    width: max-content;
+    height: 38px;
+    border-radius: 8px;
+    padding: 0 15px;
+
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-one:hover{
+    background-color:#3107a5;
+    color: white;
+}
+
+.btn-title img{
+    margin: 0 10px 3px 0;
+}
+.btn-title{
+    margin-top: 7px;
+}
+/*---------FOOTER--------*/
+
+footer{
+    background-color:#F3F3F3;
 }
