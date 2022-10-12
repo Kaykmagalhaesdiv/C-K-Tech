@@ -21,22 +21,57 @@
                     <div id="box_img">
                         <img src="assets/img/Marca.svg" alt="Logo">
                     </div>
+
+                    <div class="version-app">
+                        <p class="mb-0">Operador: Marilucia</p>
+                        <p class="mb-0" >Data - Hora: 12/08/202</p>
+                        <p class="mb-0">Versão: 1.0</p>
+                        
+                    </div>
                 </aside>
             </div>   
 
             <section id="requests" class="col-9">
-                <div class="title_content">
-                    <div class="box-header">
-
-                        <div class="title_header">
+                <header>
+                    <div class="title_content mt-3">
+                        <div class="title_header mb-3">
                             <h2>Todos os pedidos</h2>
                         </div>
+    
                         <div class="btn-title">
                             <button id="btn-novo-pedido" class="btn btn-one btn-config"><img src="assets/img/Adicionar.svg" alt=""> Novo pedido</button>
-                         </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div id="filter-user" class="mt-5">
+                    <div class="filters_box">
+                        <legend>Filtrar por</legend>
+                        <div class="filters">
+                            <select id="filter-types" class="btn-config filter_types">
+                                <option value="">Tipos</option>
+                                <option value="salao">Salão</option>
+                                <option value="delivery">Delivery</option>
+                            </select>
+    
+                            <select id="filter-status" class="btn-config filter_status">
+                                <option value="">Status</option>
+                                <option value="recebido">Recebido</option>
+                                <option value="pronto">Pronto</option>
+                                <option value="entregue">Entregue</option>
+                            </select>
+
+                            <div class="btn-print">
+                                <button id="print" class="btn-config btn-orange"><img src="assets/img/print.svg" alt="print">Imprimir</button>
+                            </div>
+                        </div>
+
+                        
+                        
                     </div>
                 </div>
             </section>
+            
 
          <footer id="footerWeb" class="col-12"> 
             <p>Copyright © 2022 C&K Tech - Todos os direitos reservados</p>
