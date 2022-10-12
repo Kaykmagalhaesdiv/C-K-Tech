@@ -165,6 +165,48 @@ body{
 
 
 /*----FIM FILTROS------*/
+.tabela-opcoes{
+    display:flex;
+    justify-content: center;
+}
+
+/* .numero-pedido{ */
+    width:156px ;
+    height:38px ;
+    background: #ECECEC;
+    border-color:solid 1px #B3B3B3;
+    font-size: 1rem;
+
+
+
+/* .itens{
+    width:367px ;
+    height:38px ;
+    background: #ECECEC;
+    border-color:solid 1px #B3B3B3;
+    font-size: 1rem;
+}
+.tipo{
+    width:104px ;
+    height:38px ;
+    background: #ECECEC;
+    border-color:solid 1px #B3B3B3;
+    font-size: 1rem;
+}
+.valor{
+    width:142px ;
+    height:38px ;
+    background: #ECECEC;
+    border-color:solid 1px #B3B3B3;
+    font-size:1rem;
+}
+.status{
+    width:137px ;
+    height:38px ;
+    background: #ECECEC;
+    border-color:solid 1px #B3B3B3;
+    font-size: 1rem;
+} */
 
 
 
