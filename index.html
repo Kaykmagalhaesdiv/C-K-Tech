@@ -12,6 +12,7 @@
     <!--CSS e Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/novoPedido.css">
 </head>
 <body>
     <main id="principal" class="col-12 row">
@@ -31,6 +32,7 @@
                 </aside>
             </div>   
 
+            <!--1 Layout-->
             <section id="requests" class="col-9">
                 <header>
                     <div class="title_content mt-3">
@@ -47,6 +49,7 @@
                 <div id="filter-user" class="mt-5">
                     <div class="filters_box">
                         <legend>Filtrar por</legend>
+
                         <div class="filters">
                             <select id="filter-types" class="btn-config filter_types">
                                 <option value="">Tipos</option>
@@ -62,17 +65,69 @@
                             </select>
 
                             <div class="btn-print">
-                                <button id="print" class="btn-config btn-orange"><img src="assets/img/print.svg" alt="print">Imprimir</button>
+                                <button id="print" onclick="window.print()" class="btn-config btn-orange"><img src="assets/img/print.svg" alt="print">Imprimir</button>
                             </div>
-                        </div>
 
-                        
-                        
+                        </div>
                     </div>
                 </div>
-            </section>
-            
+                
+                <section id="table-client" class="mt-2">
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style="width: 156px;"><input type="radio" name="number_client"> N° do pedido</td>
+                                    <td style="width: 367px;">Itens</td>
+                                    <td style="width: 104px;">Tipo</td>
+                                    <td style="width: 150px;">Valor</td>
+                                    <td style="width: 214px;">Status</td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="img-notFound">
+                            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                            <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_awucen2m.json"  background="transparent"  speed="1"  style="width: 300px; height: 250px;"  loop  autoplay></lottie-player>
+                            <h4>Não temos pedidos para mostrar</h4>
+                        </div>
+                    </div>
+                </section>
+                <!-- FIM 1 Layout-->
 
+                <!--2 Layout -->
+                
+                <!-- FIM2 Layout -->
+
+            </section>
+
+            <section id="newRequest" class="col-9" hidden>
+                <header>
+                    <div class="box-newRequest mt-3 mb-5">
+                        <h2 class="mb-3">Novo pedido</h2>
+                        <legend class="mb-2">Tipo de consumo</legend>
+                        <div class="consumption">
+                            <label for="delivery" class="control">
+                                <input id="delivery" type="radio" name="option"> Delivery
+                            </label>
+
+                            <label for="salao" class="control">
+                                <input id="salao" class="input-one" type="radio" name="option"> Salão
+                            </label>
+                        </div>
+                    </div>
+                </header>
+
+                <section id="consult">
+                    <div class="search-for-product">
+                        <div class="box-search-product">
+                            <label class="input-label" for="code-product">Buscar Produto<br>
+                                <input name="code-product" type="text" placeholder="Código do produto">
+                            </label>
+                            <button class="btn-orange"><img src="assets/img/lupa.svg" alt=""> Buscar</button>
+                        </div>
+                    </div>
+                </section>
+            </section>
          <footer id="footerWeb" class="col-12"> 
             <p>Copyright © 2022 C&K Tech - Todos os direitos reservados</p>
          </footer>

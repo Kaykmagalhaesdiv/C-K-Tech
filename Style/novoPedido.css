@@ -1,0 +1,44 @@
+@import url('style.css');
+
+.consumption{
+    font-family: 'Inter',sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.consumption .input-one{
+    margin-left: 1.8rem;
+}
+
+/* .control input[type="radio"]{
+    appearance: none;
+    color: currentColor;
+    border: 0.15em solid currentColor;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+} */
+
+input[name="code-product"]{
+    width: 17rem;
+    height: 2rem;
+    padding: 0 12px 0 12px;
+    border: 1px solid var(--label-grey);
+    border-radius: 8px;
+}
+
+.input-label{
+    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+    color:var(--label-grey) ;
+}
+
+.box-search-product .input-label{
+    margin-right:1rem ;
+}
+
+.box-search-product button img{
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
