@@ -42,3 +42,24 @@ input[name="code-product"]{
     height: 16px;
     margin-right: 4px;
 }
+
+.inputs-box label{
+    width: 0;
+}
+
+.inputs-box #amount-product{
+    width: 136px;
+}
+
+.inputs-box #name-product{
+    width:556px ;
+}
+
+.inputs-box #price-product{
+    width: 182px;
+}
+
+.inputs-content{
+    display: flex;
+    gap: 16px;
+}
