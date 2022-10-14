@@ -192,13 +192,19 @@ table{
     align-self: center;
 }
 
+.img-notFound .animation{
+    height: 202px !important;
+}
+
 .img-notFound h4{
     font-size: 1.2rem;
     font-family: 'Barlow',sans-serif;
     font-weight: 500;
     color: #B3B3B3;
-    margin-left: 0.2rem;
+    margin: .4rem 0 0 .8rem;
+    width: max-content;
 }
+
 
 /*------ fim Table---------*/
 

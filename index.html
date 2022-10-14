@@ -19,6 +19,7 @@
 
             <div class="content col-3 row">
                 <aside id="menu_lateral">
+
                     <div id="box_img">
                         <img src="assets/img/Marca.svg" alt="Logo">
                     </div>
@@ -27,7 +28,6 @@
                         <p class="mb-0">Operador: Marilucia</p>
                         <p class="mb-0" >Data - Hora: 12/08/202</p>
                         <p class="mb-0">Versão: 1.0</p>
-                        
                     </div>
                 </aside>
             </div>   
@@ -65,41 +65,34 @@
                             </select>
 
                             <div class="btn-print">
-                                <button id="print" onclick="window.print()" class="btn-config btn-orange"><img src="assets/img/print.svg" alt="print">Imprimir</button>
+                                <button id="print" class="btn-config btn-orange"><img src="assets/img/print.svg" alt="print">Imprimir</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                
-                <section id="table-client" class="mt-2">
+
+                <div id="table" class="mt-3">
                     <div class="table-box">
                         <table>
                             <thead>
-                                <tr>
-                                    <td style="width: 156px;"><input type="radio" name="number_client"> N° do pedido</td>
-                                    <td style="width: 367px;">Itens</td>
-                                    <td style="width: 104px;">Tipo</td>
-                                    <td style="width: 150px;">Valor</td>
-                                    <td style="width: 214px;">Status</td>
-                                </tr>
+                                <td style="width:156px;"><input type="radio"> N° do pedido</td>
+                                <td style="width:450px;">Itens</td>
+                                <td style="width:104px ;">Tipo</td>
+                                <td style="width: 142px;">Valor</td>
+                                <td>Status</td>
                             </thead>
                         </table>
                         <div class="img-notFound">
                             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                            <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_awucen2m.json"  background="transparent"  speed="1"  style="width: 300px; height: 250px;"  loop  autoplay></lottie-player>
+                            <lottie-player class="animation" src="https://assets5.lottiefiles.com/packages/lf20_awucen2m.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
                             <h4>Não temos pedidos para mostrar</h4>
                         </div>
                     </div>
-                </section>
-                <!-- FIM 1 Layout-->
-
-                <!--2 Layout -->
-                
-                <!-- FIM2 Layout -->
-
+                </div>
             </section>
+            <!--1 Layout-->
 
+            <!--2 layout-->
             <section id="newRequest" class="col-9" hidden>
                 <header>
                     <div class="box-newRequest mt-3 mb-5">
@@ -127,7 +120,9 @@
                         </div>
                     </div>
                 </section>
+                <!-- FIM 2 layout-->
             </section>
+
          <footer id="footerWeb" class="col-12"> 
             <p>Copyright © 2022 C&K Tech - Todos os direitos reservados</p>
          </footer>
