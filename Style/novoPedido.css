@@ -27,6 +27,8 @@ input[name="code-product"]{
     border-radius: 8px;
 }
 
+
+
 .input-label{
     font-family: 'Inter',sans-serif;
     font-weight: 400;
@@ -43,23 +45,81 @@ input[name="code-product"]{
     margin-right: 4px;
 }
 
-.inputs-box label{
-    width: 0;
+#amount-product,
+.inputs-box .label-amout{
+    width: 149px;
 }
 
-.inputs-box #amount-product{
-    width: 136px;
+#name-product,
+.inputs-box .label-product{
+    width: 635px;
+    margin-right: 8px;
+    cursor: not-allowed;
 }
 
-.inputs-box #name-product{
-    width:556px ;
+#name-product{
+    background-color: var(--grey-table);
+    opacity: 0.5;
 }
 
-.inputs-box #price-product{
+#price-product,
+.inputs-box .label-price{
     width: 182px;
+    cursor: not-allowed;
 }
 
-.inputs-content{
-    display: flex;
-    gap: 16px;
+#price-product{
+    background-color: var(--grey-table);
+    opacity: 0.5;
+    
 }
+
+.btn-save-product img{
+    margin: 0 .5rem 0.1rem 0;
+}
+
+.btn-save-product{
+    background-color: #B3B3B3;
+    font-family: 'Inter',sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid #B3B3B3;
+    margin-left: 805px;
+}
+
+
+/*TABELA*/
+
+.table-content{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 295px;
+    
+}
+
+.img-notFound{
+    align-self: center;
+}
+#table-search-product .img-notFound .animation{
+    height: 240px !important;
+}
+
+.buttons{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+}
+
+.btn-cancel{
+    background-color: #ffffff;
+    border: none;
+    color: #4A08FF;
+}
+
+.btn-save{
+    background-color: #B3B3B3;
+    border: 1px solid #B3B3B3;
+}
+/*Fim tabela*/

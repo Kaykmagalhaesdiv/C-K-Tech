@@ -122,25 +122,52 @@
                         <div class="inputs-box">
                             <div class="inputs-content">
                                 <label for="amount" class="label-amount input-label">Quantidade<br>
-                                    <input id="amount-product" name="code-product" type="number" class="w-50" placeholder="0">
+                                    <input id="amount-product" name="code-product" type="number" placeholder="0">
                                 </label>
 
-                                <label for="name-product" class="input-label">Produto<br>
-                                    <input id="name-product" name="code-product" type="text" placeholder="Nome do produto">
+                                <label for="name-product" class=" label-product input-label">Produto<br>
+                                    <input disabled id="name-product" name="code-product" type="text" placeholder="Nome do produto">
                                 </label>
 
-                                <label for="price-product" class="input-label">Preço<br>
-                                    <input id="price-product" name="code-product" type="number" placeholder="R$ 00,00">
+                                <label for="price-product" class=" label-price input-label">Preço<br>
+                                    <input disabled id="price-product" name="code-product" type="number" placeholder="R$ 00,00">
                                 </label>
+                                <button class="btn-save-product btn-config mt-3"><img src="assets/img/Adicionar.svg" alt=""> Adicionar produto</button>      
+                            </div>
+                            
+                        </div>
+                            
+                    </div>
+
+                    <section id="table-search-product" class="mt-2">
+                        <div class="table-content">
+                            <table>
+                                <thead>
+                                    <td style="width:70px;">Código</td>
+                                    <td style="width:715px;">Produto</td>
+                                    <td style="width:8px;">Quantidade</td>
+                                    <td style="width:120px ;">Valor</td>
+                                </thead>
+                            </table>
+
+                            <div class="img-notFound">
+                                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                                <lottie-player class="animation" src="https://assets5.lottiefiles.com/packages/lf20_awucen2m.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                                <h4>Não temos pedidos para mostrar</h4>
+                            </div>
+                            <div class="buttons">
+                                <button class="btn-cancel btn-config">Cancelar</button>
+                                <button class=" btn-save btn-config">Salvar pedido</button>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </section>
                 <!-- FIM 2 layout-->
             </section>
 
          <footer id="footerWeb" class="col-12"> 
-            <p>Copyright © 2022 C&K Tech - Todos os direitos reservados</p>
+            <div class="footer"><p>Copyright © 2022 C&K Tech - Todos os direitos reservados</p></div>
+            
          </footer>
     </main>
     

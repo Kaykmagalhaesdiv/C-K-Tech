@@ -31,6 +31,7 @@ legend{
     --btn-color-orange:#FF8B20;
     --grey-table:#ECECEC;
     --label-grey:#666666;
+    font-size: 80%;
 }
 
 /* ---------LATERAL-----------*/
@@ -192,12 +193,10 @@ table{
     align-self: center;
 }
 
-.img-notFound .animation{
-    height: 202px !important;
-}
+
 
 .img-notFound h4{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'Barlow',sans-serif;
     font-weight: 500;
     color: #B3B3B3;
