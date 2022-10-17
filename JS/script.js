@@ -1,10 +1,69 @@
-let aa = document.getElementById("requests");
-let bb = document.getElementById("newRequest");
-let btn = document.getElementById("btn-novo-pedido");
+let firstPage = document.getElementById("requests");
+let secondPage= document.getElementById("newRequest");
+
+let btnNewRequest = document.getElementById("btn-novo-pedido");
+let btnFind = document.getElementById('btn-find')
+let btnAddProduct = document.getElementById('btn-add');
+
+let inputQuantidade = document.getElementById("amount-product");
+let inputProduct = document.getElementById("name-product");
+let inputPreco = document.getElementById("price-product");
+let inputFindProduct = document.getElementById('codeProduct')
+
+let tableBody = document.getElementById('table-body')
+
+let imgBody = document.getElementsByClassName('img-hidden');
+
+
+let obj = [
+  {
+    codigo: '1',
+    produto: 'Hamburguer',
+    preco : 15
+  },
+  {
+    codigo: '2',
+    produto: 'Pao e manteiga',
+    preco : 20
+  },
+];
+
 
 let tradePage = () => {
-  aa.setAttribute("hidden", "true");
-  bb.removeAttribute("hidden");
+  firstPage.setAttribute("hidden", "true");
+  secondPage.removeAttribute("hidden");
 };
 
-btn.addEventListener("click", tradePage);
+let findProduct = () =>{
+  let valueInput = inputFindProduct.value;
+  
+  let findObj = obj.filter((value) =>{
+    let valueCode = value.codigo;
+    if(valueInput == ''){
+      return false
+    };
+    return valueCode.indexOf(valueInput) != -1;
+  });
+
+  let arrSum = findObj.map((value) =>{
+    let totalySum = inputQuantidade.value * value.preco;
+    return totalySum;
+  })
+  
+  
+
+  if(findObj.length == 0 || inputQuantidade.value == '' || inputQuantidade.value <= 0 || inputFindProduct.value == ''){
+    alert('Insira um codigo do produto')
+  }else{
+    inputProduct.value = findObj[0].produto;
+    inputPreco.value = arrSum[0].toFixed(2);
+    btnAddProduct.removeAttribute('class', 'btn-inactive');
+    btnAddProduct.removeAttribute('disabled','true')
+    btnAddProduct.setAttribute('class', 'btn-active btn-save-product btn-config mt-3')
+  }
+};
+
+
+
+btnNewRequest.addEventListener("click", tradePage);
+btnFind.addEventListener("click", findProduct);

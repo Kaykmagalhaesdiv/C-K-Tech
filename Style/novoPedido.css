@@ -45,15 +45,15 @@ input[name="code-product"]{
     margin-right: 4px;
 }
 
-#amount-product,
+ #amount-product,
 .inputs-box .label-amout{
-    width: 149px;
+    width: 100px;
+    margin-right: 7px;
 }
 
 #name-product,
 .inputs-box .label-product{
     width: 635px;
-    margin-right: 8px;
     cursor: not-allowed;
 }
 
@@ -64,7 +64,7 @@ input[name="code-product"]{
 
 #price-product,
 .inputs-box .label-price{
-    width: 205px;
+    width: 140px;
     cursor: not-allowed;
 }
 
@@ -72,7 +72,7 @@ input[name="code-product"]{
     background-color: var(--grey-table);
     opacity: 0.5;
     
-}
+} 
 
 .btn-save-product img{
     margin: 0 .5rem 0.1rem 0;
@@ -83,22 +83,30 @@ input[name="code-product"]{
 }
 .img-notFound{
    position: relative;
-   margin-top: 50px;
 }
 
 
-
-.btn-save-product{
+.btn-inactive{
     background-color: #B3B3B3;
+    border: 1px solid #B3B3B3;
+    cursor: not-allowed;
     font-family: 'Inter',sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
-    border: 1px solid #B3B3B3;
-    right: 0;
-    top: 20px;
-    position: absolute;
 }
 
+.btn-active{
+    background-color: var(--btn-color-orange);
+    border: 1px solid var(--btn-color-orange);
+    font-family: 'Inter',sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.inputs-content{
+    display: flex;
+    justify-content: space-between;
+}
 
 /*TABELA*/
 
@@ -135,3 +143,10 @@ input[name="code-product"]{
     border: 1px solid #B3B3B3;
 }
 /*Fim tabela*/
+
+.box-button-save-product{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
