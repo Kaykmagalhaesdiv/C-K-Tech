@@ -1,5 +1,7 @@
 
 html{
+    width: 100%;
+    height: 100%;
     padding: 0;
     margin: 0;
     
@@ -21,6 +23,12 @@ legend{
     font-size: 1rem;
     font-weight: 400;
     color: #666666;
+}
+
+main{
+    min-height: 100%;
+    
+    position: relative;
 }
 
 
@@ -180,8 +188,13 @@ thead{
 table{
     font-size: 1rem;
     font-family: 'Inter',sans-serif;
+    font-weight: 500;   
+}
+tbody{
+    font-family: 'Inter',sans-serif;
     font-weight: 500;
-    
+    color: #999999;
+    font-size: 1.1rem;
 }
 
 .table-box{
@@ -219,12 +232,12 @@ footer{
     align-items: center;
     display: flex;
     justify-content: center;
+    position: absolute;
 
     font-family: 'Barlow', sans-serif;
     font-weight: 500;
     border-top: 1px solid #F3F3F3;
     color: #B3B3B3;
-    
 }
 
 footer p{

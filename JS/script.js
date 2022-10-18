@@ -12,7 +12,7 @@ let inputFindProduct = document.getElementById('codeProduct')
 
 let tableBody = document.getElementById('table-body')
 
-let imgBody = document.getElementsByClassName('img-hidden');
+let imgBody = document.getElementById('img-hidden');
 
 
 let obj = [
@@ -48,12 +48,10 @@ let findProduct = () =>{
   let arrSum = findObj.map((value) =>{
     let totalySum = inputQuantidade.value * value.preco;
     return totalySum;
-  })
-  
-  
+  });
 
   if(findObj.length == 0 || inputQuantidade.value == '' || inputQuantidade.value <= 0 || inputFindProduct.value == ''){
-    alert('Insira um codigo do produto')
+    alert('Por favor, verifique o código do produto ou Quantidade estão corretos.')
   }else{
     inputProduct.value = findObj[0].produto;
     inputPreco.value = arrSum[0].toFixed(2);
@@ -63,7 +61,16 @@ let findProduct = () =>{
   }
 };
 
-
+let productTable = () =>{
+  imgBody.setAttribute('hidden','true')
+  tableBody.innerHTML += `<tr>
+                          <td>${inputFindProduct.value}</td>
+                          <td>${inputProduct.value}</td>
+                          <td>${inputQuantidade.value}</td>
+                          <td>R$ ${inputPreco.value}</td>
+                        </tr>`
+}
 
 btnNewRequest.addEventListener("click", tradePage);
 btnFind.addEventListener("click", findProduct);
+btnAddProduct.addEventListener("click", productTable)

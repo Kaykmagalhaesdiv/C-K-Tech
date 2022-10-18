@@ -120,11 +120,11 @@
             <legend class="mb-2">Tipo de consumo</legend>
             <div class="consumption">
               <label for="delivery" class="control">
-                <input id="delivery" type="radio" name="option" /> Delivery
+                <input value="delivery" id="delivery" type="radio" name="option" /> Delivery
               </label>
 
               <label for="salao" class="control">
-                <input id="salao" class="input-one" type="radio" name="option"
+                <input value="salao" id="salao" class="input-one" type="radio" name="option"
                 />
                 Salão
               </label>
@@ -187,7 +187,7 @@
                 <thead>
                   <td style="width: 70px">Código</td>
                   <td style="width: 715px">Produto</td>
-                  <td style="width: 8px">Quantidade</td>
+                  <td style="width: 170px">Quantidade</td>
                   <td style="width: 120px">Valor</td>
                 </thead>
 
@@ -196,7 +196,7 @@
                 </tbody>
               </table>
 
-              <div class="img-notFound img-hidden">
+              <div class="img-notFound" id="img-hidden">
                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                 <lottie-player
                   class="animation"
@@ -210,12 +210,13 @@
 
                 <h4>Não temos pedidos para mostrar</h4>
               </div>
+              <div class="buttons">
+                <button class="btn-cancel btn-config">Cancelar</button>
+                <button class="btn-save btn-config">Salvar pedido</button>
+              </div>
             </div>
           </section>
-          <div class="buttons">
-            <button class="btn-cancel btn-config">Cancelar</button>
-            <button class="btn-save btn-config">Salvar pedido</button>
-          </div>
+
         </section>
       </section>
       <!-- FIM 2 layout-->

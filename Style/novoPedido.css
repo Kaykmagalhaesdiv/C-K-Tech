@@ -53,8 +53,9 @@ input[name="code-product"]{
 
 #name-product,
 .inputs-box .label-product{
-    width: 635px;
+    width: 100%;
     cursor: not-allowed;
+    margin-right: 7px;
 }
 
 #name-product{
