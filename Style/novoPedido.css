@@ -130,6 +130,9 @@ input[name="code-product"]{
     position: absolute;
     bottom: 0;
     right: 0;
+
+    font-family: 'Inter',sans-serif;
+    font-weight: 600;
     
 }
 
@@ -138,16 +141,29 @@ input[name="code-product"]{
     border: none;
     color: #4A08FF;
 }
-
-.btn-save{
+.btn-save-inactive{
     background-color: #B3B3B3;
     border: 1px solid #B3B3B3;
+}
+
+.btn-save-active{
+    background-color: #4A08FF;
+    border: 1px solid #4A08FF;
 }
 /*Fim tabela*/
 
 .box-button-save-product{
     display: flex;
     justify-content: flex-end;
+}
+
+#result{
+    position: absolute;
+    bottom: 0;
+    font-family: 'Inter',sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #666666;
 }
 
 

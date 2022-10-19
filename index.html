@@ -93,8 +93,11 @@
                 <td style="width: 142px">Valor</td>
                 <td>Status</td>
               </thead>
+              <tbody id="table-body-result">
+
+              </tbody>
             </table>
-            <div class="img-notFound">
+            <div id="img-hidden-first" class="img-notFound">
               <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
               <lottie-player
                 class="animation"
@@ -120,11 +123,11 @@
             <legend class="mb-2">Tipo de consumo</legend>
             <div class="consumption">
               <label for="delivery" class="control">
-                <input value="delivery" id="delivery" type="radio" name="option" /> Delivery
+                <input value="Delivery" id="delivery" type="radio" name="option" /> Delivery
               </label>
 
               <label for="salao" class="control">
-                <input value="salao" id="salao" class="input-one" type="radio" name="option"
+                <input value="Salao" id="salao" class="input-one" type="radio" name="option"
                 />
                 Salão
               </label>
@@ -212,7 +215,10 @@
               </div>
               <div class="buttons">
                 <button class="btn-cancel btn-config">Cancelar</button>
-                <button class="btn-save btn-config">Salvar pedido</button>
+                <button id="btn-save-id" class="btn-save btn-config btn-save-inactive">Salvar pedido</button>
+              </div>
+              <div id="result" hidden>
+                
               </div>
             </div>
           </section>
