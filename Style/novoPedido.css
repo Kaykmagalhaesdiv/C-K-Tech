@@ -157,6 +157,43 @@ input[name="code-product"]{
     justify-content: flex-end;
 }
 
+#buttoes-status{
+    font-family: 'Inter',sans-serif;
+    font-weight: 600;
+}
+.received{
+    background-color: #B3B3B3;
+    border: 1px solid #333333;
+    color: #333333;
+}
+
+.received:hover{
+    background-color: #a7a5a5;
+    transition: background-color 0.6s;
+}
+
+.ready{
+    background-color: #FFE485;
+    color: #856700;
+    border: 1px solid #856700;
+}
+
+.ready:hover{
+    background-color: #f5d76b;
+    transition: background-color 0.6s;
+}
+
+.delivery{
+    background-color:#85FFA0 ;
+    color: #00851D;
+    border: 1px solid #00851D;
+}
+
+.delivery:hover{
+    background-color: #54f376;
+    transition: background-color 0.6s;
+}
+
 #result{
     position: absolute;
     bottom: 0;
