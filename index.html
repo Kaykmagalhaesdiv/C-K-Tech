@@ -59,7 +59,7 @@
             <legend>Filtrar por</legend>
 
             <div class="filters">
-              <select id="filter-types" class="btn-config filter_types">
+              <select id="filter-types" class="btn-config filter_types" onchange="filter()">
                 <option value="">Tipos</option>
                 <option value="salao">Salão</option>
                 <option value="delivery">Delivery</option>
@@ -80,13 +80,13 @@
             </div>
           </div>
         </div>
-
+      
         <div id="table" class="mt-3">
           <div class="table-box">
             <table>
               <thead>
                 <td style="width: 156px">
-                  <input type="radio" /> N° do pedido
+                  <input type="checkbox" /> N° do pedido
                 </td>
                 <td style="width: 450px">Itens</td>
                 <td style="width: 104px">Tipo</td>
@@ -131,7 +131,8 @@
                 />
                 Salão
               </label>
-                
+              <div id="buttoes-status">
+              </div>
             </div>
           </div>
         </header>
@@ -215,8 +216,8 @@
                 <h4>Não temos pedidos para mostrar</h4>
               </div>
               <div class="buttons">
-                <button class="btn-cancel btn-config">Cancelar</button>
-                <button id="btn-save-id" class="btn-save btn-config btn-save-inactive">Salvar pedido</button>
+                <button class="btn-cancel btn-config" onclick="window.location.reload()">Cancelar</button>
+                <button disabled id="btn-save-id" class="btn-save btn-config btn-save-inactive">Salvar pedido</button>
               </div>
               <div id="result" hidden>
                 
