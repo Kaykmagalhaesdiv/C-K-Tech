@@ -126,6 +126,16 @@ main{
     margin: 0 10px 3px 0;
 }
 
+#btn-delete{
+    width: max-content;
+    padding-top: 2px;
+}
+
+#btn-delete img{
+    width: 15px;
+    margin:0 5px 2px 0;
+}
+
 
 /*----FILTROS------*/
 

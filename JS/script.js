@@ -6,6 +6,7 @@ let btnFind = document.getElementById("btn-find");
 let btnAddProduct = document.getElementById("btn-add");
 let btnSave = document.getElementById("btn-save-id");
 let btnCancel = document.getElementById("btn-cancel");
+let btnExcluir = document.getElementById("btn-delete");
 
 let inputQuantidade = document.getElementById("amount-product");
 let inputProduct = document.getElementById("name-product");
@@ -140,8 +141,6 @@ let newProductOrder = () => {
     price: parseInt(inputPreco.value),
   });
 
-  console.log(arrayProductOrder);
-
   inputFindProduct.value = "";
   inputProduct.value = "";
   inputQuantidade.value = "";
@@ -155,9 +154,7 @@ let newProductOrder = () => {
     return (total += next);
   });
   resultPrice.removeAttribute("hidden");
-  resultPrice.innerHTML = `<h4>Total do pedido: <strong>R$ ${totalSum.toFixed(
-    2
-  )}</strong:</h4>`;
+  resultPrice.innerHTML = `<h4>Total do pedido: <strong>${totalSum.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong:</h4>`;
 
   btnSave.removeAttribute("class", "btn-save-inactive");
   btnSave.removeAttribute("disabled", "true");
@@ -165,10 +162,7 @@ let newProductOrder = () => {
 
   if (inputFindProduct.value == "" || inputQuantidade.value == "") {
     btnAddProduct.removeAttribute("class", "btn-active");
-    btnAddProduct.setAttribute(
-      "class",
-      "btn-inactive btn-save-product btn-config mt-3"
-    );
+    btnAddProduct.setAttribute("class","btn-inactive btn-save-product btn-config mt-3");
     btnAddProduct.setAttribute("disabled", "true");
   }
   tableOrderView();
@@ -187,18 +181,6 @@ let tableOrderView = () => {
   });
 };
 
-if (
-  inputQuantidade.value == "" ||
-  inputQuantidade.value <= 0 ||
-  inputFindProduct.value == ""
-) {
-  btnAddProduct.removeAttribute("class", "btn-active");
-  btnAddProduct.setAttribute(
-    "class",
-    "btn-inactive btn-save-product btn-config mt-3"
-  );
-}
-
 const changeStatus = (orderNumber) => {
   arrayOrders.forEach((value) => {
     if (value.orderNumber == orderNumber) {
@@ -212,35 +194,55 @@ const changeStatus = (orderNumber) => {
   viewTable(arrayOrders);
 };
 
+
+
+let resultFilterType = '';
 let filterType = () => {
-  let valueFilterType = "";
-  valueFilterType = document.getElementById("filter-types").value;
-  let filterTypeFormated =
-    valueFilterType != ""
-      ? valueFilterType[0].toUpperCase() + valueFilterType.substring(1)
-      : "";
+  let valueFilterType = document.getElementById("filter-types").value;
+  resultFilterType = valueFilterType
   return arrayOrders.filter((values) => {
-    if (values.type == filterTypeFormated) {
+    if (values.type == valueFilterType) {
       return values;
+    } else if(valueFilterType == ''){
+      return arrayOrders;
     }
   });
 };
 
+
+let resultFilterStatus = ''
+let filterStatus = () =>{
+  let valueFilterStatus = document.getElementById("filter-status").value;
+  resultFilterStatus = valueFilterStatus
+  return arrayOrders.filter((values) => {
+    if (values.status == valueFilterStatus) {
+      return values;
+    }
+      else if(valueFilterStatus == ''){
+      return arrayOrders;
+    }
+  });
+}
+
+// let filtersAmbers = () =>{
+//   let newFilter = filterType();
+//   let mapNewFilter = newFilter.filter((value) =>{
+//     if(value.status == resultFilterStatus){
+//       return value
+//     }
+//   })
+// }
+
 let filter = () => {
   let arrFilterType = filterType();
-  console.log(arrFilterType);
-
-  // let filterArr = arrayOrders.filter((values) => {
-  //   if (values.type == filterTypeFormated) {
-  //     return values
-  //   } else if (values.type == filterStatusFormated) {
-  //     return values;
-  //   }
-  //   viewTable(arrayOrders);
-  //   return false
-  // });
-  // viewTable(filterArr)
+  viewTable(arrFilterType)
 };
+
+let filters = () =>{
+  let arrFilterStatus = filterStatus();
+  viewTable(arrFilterStatus)
+  let aa = filtersAmbers()
+}
 
 let viewTable = (arrView) => {
   tableBodyStatus.innerHTML = "";
@@ -252,15 +254,11 @@ let viewTable = (arrView) => {
     tableBodyStatus.innerHTML += `<tr>
                                 <td> <input name="check" id="${
                                   element.orderNumber
-                                }" type="checkbox"/> ${element.orderNumber}</td>
+                                }" type="checkbox" class="checkClass" onchange="verificarCheckBox()"/> ${element.orderNumber}</td>
                                 <td>${html}</td>
                                 <td>${element.type}</td>
                                 <td>R$ ${element.total.toFixed(2)}</td>
-                                <td><button id="buttonStatus" class="btn-config ${validStatus(
-                                  element.status
-                                )}"onclick="changeStatus(${
-      element.orderNumber
-    })">${element.status}</button></td>
+                                <td><button id="buttonStatus" class="btn-config ${validStatus(element.status)}"onclick="changeStatus(${element.orderNumber})">${element.status}</button></td>
                               </tr>`;
   });
 };
@@ -301,37 +299,36 @@ let saveOrder = () => {
     total: totalSum,
     status: "Recebido",
   });
-  console.log(arrayOrders);
   viewTable(arrayOrders);
 };
 
-// let filterCheckbox = () =>{
-//   let checked = document.querySelectorAll('input[name="check"]:checked');
-//   let checkedMarked = [];
-//   checked.forEach((value) =>{
-//     checkedMarked.push(value.id)
-//   })
-//   console.log(checkedMarked)
 
-// let arrChecked = checkedMarked.map((values) =>{
-//   return values;
-// })
 
-// let Idchecked = document.getElementById('idCheck');
-// console.log(Idchecked.id)
+let filterCheckbox = () =>{
+  let checked = document.querySelectorAll('input[name="check"]:checked');
+  let checkedMarked = [];
+  checked.forEach((value) =>{
+    checkedMarked.push(value.id)
+  });
+  arrayOrders.forEach((values,index) =>{
+    if(values.orderNumber == checkedMarked){
+      arrayOrders.splice(index, arrayOrders.length)
+    }
+  })
+  let valueFilterType = document.getElementById("filter-types");
+  valueFilterType.value = '';
 
-// arrayProductOrder = arrayProductOrder.filter((filter) =>{
-//   let checkedFilter = arrChecked.some((values) => values == )
+  let valueFilterStatus = document.getElementById("filter-status");
+  valueFilterStatus.value = '';
 
-//     if(!checkedFilter){
-//       return filter
-//     }
+  viewTable(arrayOrders);
+}
 
-// })
+function verificarCheckBox() {
+  btnExcluir.removeAttribute('hidden')
+}
 
-// }
-
-// btnExcluir.addEventListener('click',filterCheckbox)
+btnExcluir.addEventListener('click',filterCheckbox)
 btnNewRequest.addEventListener("click", tradePage);
 btnFind.addEventListener("click", findProduct);
 btnAddProduct.addEventListener("click", newProductOrder);
