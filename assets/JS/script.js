@@ -6,19 +6,23 @@ let btnFind = document.getElementById("btn-find");
 let btnAddProduct = document.getElementById("btn-add");
 let btnSave = document.getElementById("btn-save-id");
 let btnCancel = document.getElementById("btn-cancel");
-let btnExcluir = document.getElementById("btn-delete");
+let btnDelete = document.getElementById("btn-delete");
+
 
 let inputQuantidade = document.getElementById("amount-product");
 let inputProduct = document.getElementById("name-product");
-let inputPreco = document.getElementById("price-product");
+let inputPrice = document.getElementById("price-product");
 let inputFindProduct = document.getElementById("codeProduct");
+
 
 let tableBody = document.getElementById("table-body");
 let tableBodyStatus = document.getElementById("table-body-result");
 let resultPrice = document.getElementById("result");
+let dateTimer = document.getElementById('date');
 
 let imgBody = document.getElementById("img-hidden");
 let imgFirstPage = document.getElementById("img-hidden-first");
+// Elements HTML To use;
 
 let product = [
   {
@@ -73,10 +77,14 @@ let product = [
   },
 ];
 
+
 let arrayProductOrder = [];
 let arrayOrders = [];
 let orderNumber = 1;
 let totalSum = 0;
+const dataHora = new Date().toLocaleString();
+dateTimer.innerHTML = dataHora
+// Array and Variavel default That will be filled during the process
 
 let tradePage = () => {
   firstPage.setAttribute("hidden", "true");
@@ -86,14 +94,16 @@ let tradePage = () => {
   tableBodyStatus.innerHTML = "";
   inputFindProduct.value = "";
   tableBody.innerHTML = "";
-
+  btnSave.removeAttribute('class', 'btn-save-inactive')
+  btnSave.setAttribute('class', 'btn-save btn-config btn-save-inactive');
+  btnSave.setAttribute('disabled','true')
   arrayProductOrder = [];
-};
+}; // Purpose of function: Change page view and return empty order array and inputs;
 
 let findProduct = () => {
   let valueInput = inputFindProduct.value;
-  if (valueInput.length < 4) {
-    alert("Por favor digite apenas 4 numeros para o codigo");
+  if (valueInput.length > 4) {
+    alertify.error("Por favor digite apenas 4 numeros para o codigo");
     return false;
   }
 
@@ -103,12 +113,12 @@ let findProduct = () => {
       return false;
     }
     return valueCode.indexOf(valueInput) != -1;
-  });
+  }); // Checks if the code entered by the user is present in the object and returns the object referring to the code 
 
   let arrSum = findObj.map((value) => {
     let totalySum = inputQuantidade.value * value.price;
     return totalySum;
-  });
+  }); // Return sum total between quantity and price;
 
   if (
     findObj.length == 0 ||
@@ -116,12 +126,12 @@ let findProduct = () => {
     inputQuantidade.value <= 0 ||
     inputFindProduct.value == ""
   ) {
-    alert(
-      "Por favor, verifique o código do produto ou Quantidade estão corretos."
-    );
+    alertify.error("Por favor, verifique o código do produto ou Quantidade estão corretos.",'aa');
   } else {
     inputProduct.value = findObj[0].productFood;
-    inputPreco.value = arrSum[0].toFixed(2);
+    inputPrice.value = arrSum[0].toFixed(2);
+    // inside the inputs, put the name of the product and the price that was found in FindObj;
+
     btnAddProduct.removeAttribute("class", "btn-inactive");
     btnAddProduct.removeAttribute("disabled", "true");
     btnAddProduct.setAttribute(
@@ -138,24 +148,27 @@ let newProductOrder = () => {
     cod: inputFindProduct.value,
     productName: inputProduct.value,
     qty: inputQuantidade.value,
-    price: parseInt(inputPreco.value),
-  });
+    price: parseInt(inputPrice.value),
+  }); // Fill the empty array with cetted data in the inputs
 
   inputFindProduct.value = "";
   inputProduct.value = "";
   inputQuantidade.value = "";
-  inputPreco.value = "";
+  inputPrice.value = "";
+  // Then return the default inputs
 
   let mapPrice = arrayProductOrder.map((valor) => {
     return valor.price;
   });
+
   totalSum = 0;
   totalSum = mapPrice.reduce((total, next) => {
     return (total += next);
   });
+
   resultPrice.removeAttribute("hidden");
   resultPrice.innerHTML = `<h4>Total do pedido: <strong>${totalSum.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong:</h4>`;
-
+  alertify.success('Produto adicionado!')
   btnSave.removeAttribute("class", "btn-save-inactive");
   btnSave.removeAttribute("disabled", "true");
   btnSave.setAttribute("class", "btn-save btn-config btn-save-active");
@@ -165,9 +178,11 @@ let newProductOrder = () => {
     btnAddProduct.setAttribute("class","btn-inactive btn-save-product btn-config mt-3");
     btnAddProduct.setAttribute("disabled", "true");
   }
+  
   tableOrderView();
   return false;
 };
+
 
 let tableOrderView = () => {
   tableBody.innerHTML = "";
@@ -178,7 +193,7 @@ let tableOrderView = () => {
                           <td>${item.qty}</td>
                           <td>R$ ${item.price}</td>
                         </tr>`;
-  });
+  }); // It loops through the filled array and puts the data in the HTML
 };
 
 const changeStatus = (orderNumber) => {
@@ -189,7 +204,7 @@ const changeStatus = (orderNumber) => {
       } else if (value.status === "Pronto") {
         value.status = "Entregue";
       }
-    }
+    } // Function to change the class names of status buttons on click
   });
   viewTable(arrayOrders);
 };
@@ -224,15 +239,6 @@ let filterStatus = () =>{
   });
 }
 
-// let filtersAmbers = () =>{
-//   let newFilter = filterType();
-//   let mapNewFilter = newFilter.filter((value) =>{
-//     if(value.status == resultFilterStatus){
-//       return value
-//     }
-//   })
-// }
-
 let filter = () => {
   let arrFilterType = filterType();
   viewTable(arrFilterType)
@@ -241,7 +247,6 @@ let filter = () => {
 let filters = () =>{
   let arrFilterStatus = filterStatus();
   viewTable(arrFilterStatus)
-  let aa = filtersAmbers()
 }
 
 let viewTable = (arrView) => {
@@ -254,13 +259,13 @@ let viewTable = (arrView) => {
     tableBodyStatus.innerHTML += `<tr>
                                 <td> <input name="check" id="${
                                   element.orderNumber
-                                }" type="checkbox" class="checkClass" onchange="verificarCheckBox()"/> ${element.orderNumber}</td>
+                                }" type="checkbox" class="checkClass" onclick="viewBtn()"/> ${element.orderNumber}</td>
                                 <td>${html}</td>
                                 <td>${element.type}</td>
                                 <td>R$ ${element.total.toFixed(2)}</td>
                                 <td><button id="buttonStatus" class="btn-config ${validStatus(element.status)}"onclick="changeStatus(${element.orderNumber})">${element.status}</button></td>
                               </tr>`;
-  });
+  }); // Standard function to loop through desired array and show in HTML.
 };
 let validStatus = (status) => {
   let statusClass = "";
@@ -289,7 +294,7 @@ let saveOrder = () => {
   secondPage.setAttribute("hidden", "true");
   firstPage.removeAttribute("hidden");
 
-  imgFirstPage.setAttribute("hidden", "true");
+  imgFirstPage.setAttribute("hidden", "");
   tableBodyStatus.innerHTML = "";
 
   arrayOrders.push({
@@ -298,10 +303,26 @@ let saveOrder = () => {
     type: status,
     total: totalSum,
     status: "Recebido",
-  });
+  }); // Added new items to empty array;
+  alertify.success('Pedido Salvo!')
   viewTable(arrayOrders);
-};
+}; 
 
+let viewBtn = () =>{
+  let valueChecked = document.querySelectorAll('input[name="check"]:checked');
+  let valueFilter = document.getElementById("filter-user");
+  let valuesCheckeds = [];
+  valueChecked.forEach((values) =>{
+    valuesCheckeds.push(values.id)
+  })
+  if(valuesCheckeds.length > 0){
+    valueFilter.setAttribute('hidden','true');
+    btnDelete.removeAttribute('hidden','true')
+  } else{
+    valueFilter.removeAttribute('hidden');
+    btnDelete.setAttribute('hidden','true')
+  };
+} // Appear and disappear delete button;
 
 
 let filterCheckbox = () =>{
@@ -309,26 +330,52 @@ let filterCheckbox = () =>{
   let checkedMarked = [];
   checked.forEach((value) =>{
     checkedMarked.push(value.id)
-  });
-  arrayOrders.forEach((values,index) =>{
-    if(values.orderNumber == checkedMarked){
-      arrayOrders.splice(index, arrayOrders.length)
+  }); // return id of CheckBox to empy Array
+
+  filtrado = checkedMarked.map((value) =>{
+    return value
+  })
+
+  arrayOrders = arrayOrders.filter((received) =>{
+    const select = filtrado.some((checked) => checked == received.orderNumber);
+    if(!select){
+      return received
     }
   })
+
   let valueFilterType = document.getElementById("filter-types");
   valueFilterType.value = '';
 
   let valueFilterStatus = document.getElementById("filter-status");
   valueFilterStatus.value = '';
+  alertify.error('Pedido Excluido(s)!')
 
   viewTable(arrayOrders);
 }
-
-function verificarCheckBox() {
-  btnExcluir.removeAttribute('hidden')
+let viewQuestion = () =>{
+  alertify.confirm("Excluir pedido", "Você deseja realmente excluir um pedido?.",
+   function(){
+    filterCheckbox();
+    },
+    function(){
+    });
 }
 
-btnExcluir.addEventListener('click',filterCheckbox)
+
+function printIt() {
+  let contentPrint = document.getElementById('table').innerHTML;
+  var win = window.open();
+  self.focus();
+  win.document.open();
+  win.document.write('<'+'html'+'><'+'body'+'>');
+  win.document.write(contentPrint);
+  win.document.write('<'+'/body'+'><'+'/html'+'>');
+  win.document.close();
+  win.print();
+  win.close();
+} // function responsible for printing the screen when clicking on the "Print" button
+
+btnDelete.addEventListener('click',viewQuestion)
 btnNewRequest.addEventListener("click", tradePage);
 btnFind.addEventListener("click", findProduct);
 btnAddProduct.addEventListener("click", newProductOrder);
